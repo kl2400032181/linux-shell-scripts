@@ -1,0 +1,73 @@
+Bash Comparison Operators
+1️⃣ Integer Comparisons (use [ ])
+Operator	Meaning	Example	Output
+-eq	equal to	[ 5 -eq 5 ]	true
+-ne	not equal to	[ 5 -ne 3 ]	true
+-lt	less than	[ 2 -lt 5 ]	true
+-le	less than or equal	[ 3 -le 3 ]	true
+-gt	greater than	[ 5 -gt 2 ]	true
+-ge	greater than or equal	[ 5 -ge 5 ]	true
+
+Example:
+
+read X
+read Y
+
+if [ "$X" -gt "$Y" ]; then
+    echo "X is greater than Y"
+elif [ "$X" -lt "$Y" ]; then
+    echo "X is less than Y"
+else
+    echo "X is equal to Y"
+fi
+
+2️⃣ String Comparisons (use [ ])
+Operator	Meaning	Example
+=	equal	[ "$a" = "$b" ]
+!=	not equal	[ "$a" != "$b" ]
+<	less than (lexicographic)	[ "$a" \< "$b" ]
+>	greater than (lexicographic)	[ "$a" \> "$b" ]
+
+Note: < and > must be escaped with \ inside [ ].
+
+3️⃣ Logical Operators
+Operator	Meaning	Example
+!	NOT	[ ! "$X" -eq 5 ]
+-a	AND	[ "$X" -gt 2 -a "$X" -lt 10 ]
+-o	OR	[ "$X" -lt 2 -o "$X" -gt 10 ]
+
+Modern Bash prefers [[ ]] for combining conditions:
+
+if [[ $X -gt 2 && $X -lt 10 ]]; then
+    echo "X is between 3 and 9"
+fi
+
+4️⃣ Tips for Interviews / Jobs
+
+Integer vs String: Always use -eq, -lt, -gt for numbers and =, != for strings.
+
+Spaces are mandatory inside [ ].
+
+Use quotes around variables to avoid errors with empty values: [ "$X" -lt "$Y" ].
+
+[[ ]] is safer for complex conditions and supports && and || without escaping.
+
+Key Rules for Bash [ ] Test
+
+Always put spaces: [ expression ]
+
+Comparison operators inside [ ] for integers:
+
+-lt → less than
+
+-gt → greater than
+
+-eq → equal to
+
+then can be on the same line with ; or next line
+
+💡 Quick Tip:
+
+if [ condition ]; then   # correct
+if [ condition ]         # syntax error without then or newline
+if[ condition ]; then    # syntax error
