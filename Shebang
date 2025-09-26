@@ -1,0 +1,3 @@
+If asked “What is a shebang?”, a perfect answer is:
+
+“It’s the #! at the start of a script that tells the system which interpreter to use to execute the file, e.g., /bin/bash for Bash scripts.”
